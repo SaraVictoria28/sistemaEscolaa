@@ -6,20 +6,20 @@ using SistemaEscola.Data;
 
 namespace Escola.Service
 {
-    public class EscolaService
+    public class EscolaService // Classe principal do sistema 
     {
         private readonly AlunoRepository _alunoRepo;
         private readonly CursoRepository _cursoRepo;
         private readonly MatriculaRepository _matriculaRepo;
 
-        public EscolaService()
+        public EscolaService() //Construtor
         {
             _alunoRepo = new AlunoRepository();
             _cursoRepo = new CursoRepository();
             _matriculaRepo = new MatriculaRepository();
         }
 
-        public void Executar()
+        public void Executar() //Loop principal 
         {
             while (true)
             {
@@ -58,7 +58,7 @@ namespace Escola.Service
             }
         }
 
-        private void CadastrarNovoAluno()
+        private void CadastrarNovoAluno() //Metodo para cadastro de novo aluno
         {
             Console.Clear();
             Console.WriteLine("--- Cadastro de Aluno ---");
@@ -68,13 +68,13 @@ namespace Escola.Service
             Console.Write("Idade: ");
             var idade = Console.ReadLine();
 
-            var novoAluno = new Aluno
+            var novoAluno = new Aluno 
             {
                 Nome = nome,
                 Idade = idade
             };
 
-            if (string.IsNullOrWhiteSpace(novoAluno.Nome))
+            if (string.IsNullOrWhiteSpace(novoAluno.Nome)) 
             {
                 Console.WriteLine("O nome do aluno não pode ser vazio.");
                 return;
@@ -84,7 +84,7 @@ namespace Escola.Service
             Console.WriteLine($"Aluno '{novoAluno.Nome}' cadastrado com sucesso! ID: {novoAluno.Id}");
         }
 
-        private void CadastrarNovoCurso()
+        private void CadastrarNovoCurso() //MEtodo de cadastro de novo curso
         {
             Console.Clear();
             Console.WriteLine("--- Cadastro de Curso ---");
@@ -92,7 +92,7 @@ namespace Escola.Service
             var nome = Console.ReadLine();
 
             Console.Write("Carga Horária: ");
-            if (!int.TryParse(Console.ReadLine(), out int cargaHoraria))
+            if (!int.TryParse(Console.ReadLine(), out int cargaHoraria)) //Validacao de entrada
             {
                 Console.WriteLine(" Carga horária inválida. Deve ser um número inteiro.");
                 return;
@@ -104,7 +104,7 @@ namespace Escola.Service
                 CargaHoraria = cargaHoraria
             };
 
-            if (string.IsNullOrWhiteSpace(novoCurso.Nome))
+            if (string.IsNullOrWhiteSpace(novoCurso.Nome)) 
             {
                 Console.WriteLine("O nome do curso não pode ser vazio.");
                 return;
@@ -119,7 +119,7 @@ namespace Escola.Service
             Console.WriteLine($"Curso '{novoCurso.Nome}' cadastrado com sucesso! ID: {novoCurso.Id}");
         }
 
-        private void MatricularAluno()
+        private void MatricularAluno() //Metodo para matricular aluno em curso
         {
             Console.Clear();
             Console.WriteLine("--- Matricular Aluno em Curso ---");
@@ -173,7 +173,7 @@ namespace Escola.Service
             Console.WriteLine("Matrícula realizada com sucesso!");
         }
 
-        private void ListarCursosDoAluno()
+        private void ListarCursosDoAluno() 
         {
             Console.Clear();
             Console.WriteLine("--- Listar Cursos de um Aluno ---");
@@ -186,7 +186,7 @@ namespace Escola.Service
             Console.Write("\nDigite o ID do Aluno: ");
             if (!int.TryParse(Console.ReadLine(), out int idAluno))
             {
-                Console.WriteLine("⚠ ID do aluno inválido.");
+                Console.WriteLine(" ID do aluno inválido.");
                 return;
             }
 
@@ -205,7 +205,7 @@ namespace Escola.Service
             }
         }
 
-        private void ListarAlunosDoCurso()
+        private void ListarAlunosDoCurso() 
         {
             Console.Clear();
             Console.WriteLine("--- Listar Alunos de um Curso ---");
